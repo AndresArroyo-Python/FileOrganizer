@@ -6,7 +6,7 @@ import filecmp
 # Load libraries
 from pathlib import Path
 from datetime import datetime
-
+from tkinter import messagebox, simpledialog
 
 def check_folder (user_dest_path):
     # user_dest_path is the destination path selected by the user
@@ -17,6 +17,15 @@ def check_folder (user_dest_path):
     if folder_path.is_dir():
         exist = True
     # Return control variable
+    return exist
+
+
+def check_file (file_dest_path):
+    #check if file exist to avoid overwrite and give the user the option to do it manualy
+    file_path = Path(file_dest_path)
+    exist = False
+    if file_path.is_file():
+        exist = True
     return exist
 
 
@@ -156,7 +165,9 @@ pref_erase_origin = False
 
 
 
-# Check selected folder
+#initialize variables
+file_exist = False
+#check selected folder
 exist = check_folder(user_dest_path)
 text = ("Original Folder: " + str(user_dest_path) + " Exist: " + str(exist))
 write_log_file (text)
@@ -178,18 +189,25 @@ for item in files:
     exist, created = check_create_folder(final_dest_path)
     text = ("Folder exist: " + str(exist) + " created:" + str(created))
     write_log_file(text)
-    
-    error = copy_files_directory_error(file_orig_path , final_dest_path)
-    text = ("Copy error: " + str(error))
-    write_log_file(text)
-    
 
-    copied_file_path = final_dest_path + "\\" + item
-    match = get_match_files(file_orig_path, copied_file_path)
-
-    # Check copy error and file match conditions and general preference erase origin is true
-    if ((match) and (not error) and pref_erase_origin):
-        text = ("Deleting file: " + str(file_orig_path))
+    file_exist = check_file(final_dest_path + "\\" + item)
+    if file_exist:
+        text = ("File found user need to copy it manualy: " + final_dest_path + "\\" + item)
         write_log_file(text)
-        erase_file(file_orig_path)
+        # For alerts
+        messagebox.showinfo("File found", "Please copy file manually \n \n" + final_dest_path + "\\" + item)
+    else:
+        error = copy_files_directory_error(file_orig_path , final_dest_path)
+        text = ("Copy error: " + str(error))
+        write_log_file(text)
+        
+
+        copied_file_path = final_dest_path + "\\" + item
+        match = get_match_files(file_orig_path, copied_file_path)
+
+        # Check copy error and file match conditions and general preference erase origin is true
+        if ((match) and (not error) and pref_erase_origin):
+            text = ("Deleting file: " + str(file_orig_path))
+            write_log_file(text)
+            erase_file(file_orig_path)
         
