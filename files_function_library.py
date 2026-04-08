@@ -7,6 +7,8 @@ import filecmp
 from pathlib import Path
 from datetime import datetime
 from tkinter import messagebox, simpledialog
+from tkinter import Tk
+from tkinter.filedialog import askdirectory
 
 def check_folder (user_dest_path):
     # user_dest_path is the destination path selected by the user
@@ -153,61 +155,98 @@ def erase_file (file_orig_path):
 
 
 
-#---------------------------------Proposed Logic-----------------------
-#example path syntaxis "C:\\01 Andres\\google-python-exercises\\2026"
-#please type the destination file path in next variable declaration
-user_dest_path = "C:\\01 Andres\\google-python-exercises"
-#please type the file origin path in next variable declaration
-user_orig_path = "C:\\01 Andres\\google-python-exercises\\2026"
-#if you want to keep original files in next variable declaration
-#please type True if you want to erase original files or type False
+#---------------------------------Main Logic-----------------------
+# Hide the main Tkinter window
+Tk().withdraw() 
+
+#initialize variables
+folder_orig_selected= False
+folder_dest_selected= False
+file_exist = False
+endtext = ""
+
+# Open the folder selection dialog
+folder_selected = askdirectory(title="Select Files Destination Folder")
+
+if folder_selected:
+    #destination file path in next variable declaration
+    #example path syntaxis "C:\\01 Andres\\google-python-exercises\\2026"
+    #user_dest_path = "C:\\01 Andres\\google-python-exercises"
+    user_dest_path = folder_selected
+    folder_dest_selected = True
+else:
+    text = "User cancelled Files Destination Folder selection."
+    endtext = text
+    write_log_file(text)
+
+# Open the folder selection dialog
+folder_selected = askdirectory(title="Select Files Destination Folder")
+
+if folder_selected:
+    #file destination path in next variable declaration
+    #user_orig_path = "C:\\01 Andres\\google-python-exercises\\2026"
+    user_orig_path = folder_selected
+    folder_orig_selected = True
+else:
+    text = "User cancelled File Origin Folder selection."
+    #add a line end to the text in case user canceled folder selection
+    if (folder_dest_selected):
+        endtext = text
+    else:
+        endtext = endtext + "\n" + text
+    write_log_file(text)
+    
+#next variable declaration is for keep original files 
+#please type True if you want to erase original files or keep as False
 pref_erase_origin = False
 
 
-
-#initialize variables
-file_exist = False
-#check selected folder
-exist = check_folder(user_dest_path)
-text = ("Original Folder: " + str(user_dest_path) + " Exist: " + str(exist))
-write_log_file (text)
-files = check_list_files(user_orig_path)
-text =  ("Files found: " + str(files))
-write_log_file (text)
-
-for item in files:
-    
-    file_orig_path = user_orig_path + "\\" + item
-    write_log_file (file_orig_path)
-    year, month = get_date_file (file_orig_path)
-    text = ("Creation year: " + str(year) + " month: " + str(month))
+#only if user selected the two folders
+if (folder_orig_selected) and (folder_dest_selected):
+    #check selected folder
+    exist = check_folder(user_dest_path)
+    text = ("Original Folder: " + str(user_dest_path) + " Exist: " + str(exist))
+    write_log_file (text)
+    files = check_list_files(user_orig_path)
+    text =  ("Files found: " + str(files))
     write_log_file (text)
 
-    final_dest_path = user_dest_path + "\\" + year + "\\" + month
-    text = ("Destiny Folder: " + str(final_dest_path))
-    write_log_file (text)
-    exist, created = check_create_folder(final_dest_path)
-    text = ("Folder exist: " + str(exist) + " created:" + str(created))
-    write_log_file(text)
-
-    file_exist = check_file(final_dest_path + "\\" + item)
-    if file_exist:
-        text = ("File found user need to copy it manualy: " + final_dest_path + "\\" + item)
-        write_log_file(text)
-        # For alerts
-        messagebox.showinfo("File found", "Please copy file manually \n \n" + final_dest_path + "\\" + item)
-    else:
-        error = copy_files_directory_error(file_orig_path , final_dest_path)
-        text = ("Copy error: " + str(error))
-        write_log_file(text)
+    for item in files:
         
+        file_orig_path = user_orig_path + "/" + item
+        write_log_file (file_orig_path)
+        year, month = get_date_file (file_orig_path)
+        text = ("Creation year: " + str(year) + " month: " + str(month))
+        write_log_file (text)
 
-        copied_file_path = final_dest_path + "\\" + item
-        match = get_match_files(file_orig_path, copied_file_path)
+        final_dest_path = user_dest_path + "/" + year + "/" + month
+        text = ("Destiny Folder: " + str(final_dest_path))
+        write_log_file (text)
+        exist, created = check_create_folder(final_dest_path)
+        text = ("Folder exist: " + str(exist) + " created:" + str(created))
+        write_log_file(text)
 
-        # Check copy error and file match conditions and general preference erase origin is true
-        if ((match) and (not error) and pref_erase_origin):
-            text = ("Deleting file: " + str(file_orig_path))
+        file_exist = check_file(final_dest_path + "/" + item)
+        if file_exist:
+            text = ("File found user need to copy it manualy: " + final_dest_path + "/" + item)
             write_log_file(text)
-            erase_file(file_orig_path)
-        
+            # show an alert
+            messagebox.showinfo("File found", "Please copy file manually \n \n" + final_dest_path + "/" + item)
+        else:
+            error = copy_files_directory_error(file_orig_path , final_dest_path)
+            text = ("Copy error: " + str(error))
+            write_log_file(text)
+            
+
+            copied_file_path = final_dest_path + "/" + item
+            match = get_match_files(file_orig_path, copied_file_path)
+
+            # Check copy error and file match conditions and general preference erase origin is true
+            if ((match) and (not error) and pref_erase_origin):
+                text = ("Deleting file: " + str(file_orig_path))
+                write_log_file(text)
+                erase_file(file_orig_path)
+
+else:
+    # show an alert
+    messagebox.showinfo("Error", endtext)
