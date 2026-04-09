@@ -93,7 +93,7 @@ def write_log_file (new_text_line):
     # get current directory
     current_directory = os.getcwd()
     # creates the path
-    file_path =  current_directory + "\\" + year + "_" + month + "_" + 'file_organizer.txt'
+    file_path =  current_directory + "/" + year + "_" + month + "_" + day + "_" + 'file_organizer.txt'
     # creates the content to write
     content = (year + "-" + month + "-" + day +" " + current_time + "> " + new_text_line)
 
@@ -156,16 +156,17 @@ def erase_file (file_orig_path):
 
 
 #---------------------------------Main Logic-----------------------
-# Hide the main Tkinter window
+#hide the main Tkinter window
 Tk().withdraw() 
 
 #initialize variables
 folder_orig_selected= False
 folder_dest_selected= False
 file_exist = False
+pref_erase_origin = False
 endtext = ""
 
-# Open the folder selection dialog
+#open the folder selection dialog
 folder_selected = askdirectory(title="Select Files Destination Folder")
 
 if folder_selected:
@@ -173,22 +174,24 @@ if folder_selected:
     #example path syntaxis "C:\\01 Andres\\google-python-exercises\\2026"
     #user_dest_path = "C:\\01 Andres\\google-python-exercises"
     user_dest_path = folder_selected
+    write_log_file("User select destiny folder " + user_dest_path)
     folder_dest_selected = True
 else:
     text = "User cancelled Files Destination Folder selection."
     endtext = text
     write_log_file(text)
 
-# Open the folder selection dialog
-folder_selected = askdirectory(title="Select Files Destination Folder")
+#open the folder selection dialog
+folder_selected = askdirectory(title="Select Files Originals Folder")
 
 if folder_selected:
     #file destination path in next variable declaration
     #user_orig_path = "C:\\01 Andres\\google-python-exercises\\2026"
     user_orig_path = folder_selected
+    write_log_file("User select originals folder " + user_orig_path)
     folder_orig_selected = True
 else:
-    text = "User cancelled File Origin Folder selection."
+    text = "User cancelled File Originals Folder selection."
     #add a line end to the text in case user canceled folder selection
     if (folder_dest_selected):
         endtext = text
@@ -198,7 +201,14 @@ else:
     
 #next variable declaration is for keep original files 
 #please type True if you want to erase original files or keep as False
-pref_erase_origin = False
+#show the popup message
+response = messagebox.askyesno("Confirm", "Do you want to erase original files?")
+
+if response:
+    write_log_file("User confirmed erase originals")
+    pref_erase_origin = True
+else:
+    write_log_file("User cancel erase originals")
 
 
 #only if user selected the two folders
