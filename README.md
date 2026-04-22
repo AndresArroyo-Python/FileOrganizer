@@ -21,3 +21,11 @@ Move: Transfers the file from the source to its new organized home.
 
 ## Activity Logging
 The system maintains a comprehensive Audit Trail in text format, documenting every file transaction and system event for post-execution verification
+
+## Installation
+1. Clone the repository:
+   `git clone https://github.com/AndresArroyo-Python/FileOrganizer.git`
+2. Navigate to the folder:
+   `cd FileOrganizer`
+3. Run the script:
+   `python src/main.py`
