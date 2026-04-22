@@ -18,3 +18,5 @@ Scan: Iterates through all files in the designated "Input" folder.
 Extract: Retrieves the creation timestamp from each file.
 Create: Checks if the corresponding Year/Month folders exist; if not, it creates them.
 Move: Transfers the file from the source to its new organized home.
+
+The system maintains a comprehensive Audit Trail in text format, documenting every file transaction and system event for post-execution verification
