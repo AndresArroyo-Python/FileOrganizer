@@ -1,0 +1,47 @@
+2026-06-01 12:28:28> User select destiny folder C:/01 Andres/google-python-exercises/origin_images
+2026-06-01 12:28:34> User select originals folder C:/01 Andres/google-python-exercises/image_test
+2026-06-01 12:28:37> User cancel erase originals
+2026-06-01 12:28:37> Original Folder: C:/01 Andres/google-python-exercises/origin_images Exist: True
+2026-06-01 12:28:37> Files found: ['andres_Arroyo_profile.png', 'imagen1.txt', 'imagen2.txt', 'imagen3.txt', 'imagen4.txt', 'imagen5.txt']
+2026-06-01 12:28:37> C:/01 Andres/google-python-exercises/image_test/andres_Arroyo_profile.png
+2026-06-01 12:28:37> Creation year: 2025 month: 11
+2026-06-01 12:28:37> Destiny Folder: C:/01 Andres/google-python-exercises/origin_images/2025/2025-11
+2026-06-01 12:28:37> Folder exist: False created:True
+2026-06-01 12:28:37> File copied successfully source: C:/01 Andres/google-python-exercises/image_test/andres_Arroyo_profile.png to: C:/01 Andres/google-python-exercises/origin_images/2025/2025-11
+2026-06-01 12:28:37> Copy error: False
+2026-06-01 12:28:37> Checking before copying Files match Origin: C:/01 Andres/google-python-exercises/image_test/andres_Arroyo_profile.png Destination: C:/01 Andres/google-python-exercises/origin_images/2025/2025-11/andres_Arroyo_profile.png
+2026-06-01 12:28:37> C:/01 Andres/google-python-exercises/image_test/imagen1.txt
+2026-06-01 12:28:37> Creation year: 2026 month: 03
+2026-06-01 12:28:37> Destiny Folder: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03
+2026-06-01 12:28:37> Folder exist: False created:True
+2026-06-01 12:28:37> File copied successfully source: C:/01 Andres/google-python-exercises/image_test/imagen1.txt to: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03
+2026-06-01 12:28:37> Copy error: False
+2026-06-01 12:28:37> Checking before copying Files match Origin: C:/01 Andres/google-python-exercises/image_test/imagen1.txt Destination: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03/imagen1.txt
+2026-06-01 12:28:37> C:/01 Andres/google-python-exercises/image_test/imagen2.txt
+2026-06-01 12:28:37> Creation year: 2026 month: 03
+2026-06-01 12:28:37> Destiny Folder: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03
+2026-06-01 12:28:37> Folder exist: True created:False
+2026-06-01 12:28:37> File copied successfully source: C:/01 Andres/google-python-exercises/image_test/imagen2.txt to: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03
+2026-06-01 12:28:37> Copy error: False
+2026-06-01 12:28:37> Checking before copying Files match Origin: C:/01 Andres/google-python-exercises/image_test/imagen2.txt Destination: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03/imagen2.txt
+2026-06-01 12:28:37> C:/01 Andres/google-python-exercises/image_test/imagen3.txt
+2026-06-01 12:28:37> Creation year: 2026 month: 03
+2026-06-01 12:28:37> Destiny Folder: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03
+2026-06-01 12:28:37> Folder exist: True created:False
+2026-06-01 12:28:37> File copied successfully source: C:/01 Andres/google-python-exercises/image_test/imagen3.txt to: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03
+2026-06-01 12:28:37> Copy error: False
+2026-06-01 12:28:37> Checking before copying Files match Origin: C:/01 Andres/google-python-exercises/image_test/imagen3.txt Destination: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03/imagen3.txt
+2026-06-01 12:28:37> C:/01 Andres/google-python-exercises/image_test/imagen4.txt
+2026-06-01 12:28:37> Creation year: 2026 month: 03
+2026-06-01 12:28:37> Destiny Folder: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03
+2026-06-01 12:28:37> Folder exist: True created:False
+2026-06-01 12:28:37> File copied successfully source: C:/01 Andres/google-python-exercises/image_test/imagen4.txt to: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03
+2026-06-01 12:28:37> Copy error: False
+2026-06-01 12:28:37> Checking before copying Files match Origin: C:/01 Andres/google-python-exercises/image_test/imagen4.txt Destination: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03/imagen4.txt
+2026-06-01 12:28:37> C:/01 Andres/google-python-exercises/image_test/imagen5.txt
+2026-06-01 12:28:37> Creation year: 2026 month: 03
+2026-06-01 12:28:37> Destiny Folder: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03
+2026-06-01 12:28:37> Folder exist: True created:False
+2026-06-01 12:28:37> File copied successfully source: C:/01 Andres/google-python-exercises/image_test/imagen5.txt to: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03
+2026-06-01 12:28:37> Copy error: False
+2026-06-01 12:28:37> Checking before copying Files match Origin: C:/01 Andres/google-python-exercises/image_test/imagen5.txt Destination: C:/01 Andres/google-python-exercises/origin_images/2026/2026-03/imagen5.txt
