@@ -88,7 +88,7 @@ if (folder_orig_selected) and (folder_dest_selected):
         text = ("Creation year: " + str(year) + " month: " + str(month))
         write_log_file (text)
 
-        final_dest_path = user_dest_path + "/" + year + "/" + month
+        final_dest_path = user_dest_path + "/" + year + "/" + year + "-" + month
         text = ("Destiny Folder: " + str(final_dest_path))
         write_log_file (text)
         exist, created = check_create_folder(final_dest_path)
